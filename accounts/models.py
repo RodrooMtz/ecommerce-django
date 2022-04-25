@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
+
 # Create your models here.
+
 
 class MyAccountManager(BaseUserManager):
     def create_user(self, first_name, last_name, username, email, password=None):
@@ -10,10 +13,10 @@ class MyAccountManager(BaseUserManager):
             raise ValueError('el usuario debe tener un username')
 
         user = self.model(
-            email = self.normalize_email(email),
-            username = username,
-            first_name = first_name,
-            last_name = last_name,
+            email=self.normalize_email(email),
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
         )
 
         user.set_password(password)
@@ -22,11 +25,11 @@ class MyAccountManager(BaseUserManager):
 
     def create_superuser(self, first_name, last_name, email, username, password):
         user = self.create_user(
-            email = self.normalize_email(email),
-            username = username,
-            password = password,
-            first_name = first_name,
-            last_name = last_name,
+            email=self.normalize_email(email),
+            username=username,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
         )
 
         user.is_admin = True
@@ -35,8 +38,6 @@ class MyAccountManager(BaseUserManager):
         user.is_superadmin = True
         user.save(using=self._db)
         return user
-
-
 
 
 class Account(AbstractBaseUser):
@@ -66,7 +67,3 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, perm, obj=None):
         return True
-
-
-
-
