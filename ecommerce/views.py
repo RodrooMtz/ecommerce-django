@@ -14,3 +14,7 @@ def home(request):
     }
 
     return render(request, 'home.html', context)
+
+
+def aviso(request):
+    return render(request, 'aviso_privacidad.html')

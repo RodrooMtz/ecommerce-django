@@ -5,13 +5,16 @@
 {% block content %}
 
 <!-- ========================= SECTION MAIN ========================= -->
-<section class="section-intro padding-y-sm">
-    <div class="container">
-        <div class="intro-banner-wrap">
-            <img src="{% static 'images/banners/banner01.jpg' %}" class="img-fluid rounded">
-        </div>
-    </div> <!-- container //  -->
-</section>
+<br>
+<div class="container">
+    <section class="u-clearfix u-image u-section-5" id="sec-ab55" data-image-width="1280" data-image-height="854">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <h1 class="u-custom-font u-font-ubuntu u-text u-text-default u-text-white u-text-1">Conoce Nuestros Productos</h1>
+        <h5 class="u-custom-font u-font-ubuntu u-text u-text-default u-text-white u-text-2">A los mejores precios</h5>
+        <a href="{% url 'store' %}" class="u-border-none u-btn u-button-style u-text-body-alt-color u-btn-1">Tienda</a>
+      </div>
+    </section>
+</div>
     <!-- ========================= SECTION MAIN END// ========================= -->
 
     <!-- ========================= SECTION  ========================= -->
@@ -30,7 +33,6 @@
                         <figcaption class="info-wrap">
                             <a href="{{ product.get_url }}" class="title">{{product.product_name}}</a>
                             <div class="price mt-1">{{ product.price }}</div> <!-- price-wrap.// -->
-
                             <div class="rating-star">
                                 <span>
                                     <i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
@@ -40,7 +42,6 @@
                                     <i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
                                 </span>
                             </div>
-
                         </figcaption>
                     </div>
                 </div> <!-- col.// -->

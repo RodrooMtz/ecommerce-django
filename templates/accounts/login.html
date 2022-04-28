@@ -6,34 +6,34 @@
 <section class="section-conten padding-y" style="min-height:84vh">
     {% if request.GET.command == 'verification' %}
         <div class="container mx-auto alert alert-info" role="alert" style="max-width: 380px; margin-top: 100px;">
-            Te hemos enviado un email para confirmar tu cuenta [{{ request.GET.email }}]
+            Te enviamos un correo electrónico para confirmar tu cuenta [{{ request.GET.email }}]
             <br><br>
-            Si ya esta verificada tu cuenta, puedes iniciar sesion <a href="{% url 'login' %}">Login</a>
+            Si ya esta verificada tu cuenta, puedes iniciar sesión <a href="{% url 'login' %}">Iniciar Sesión</a>
         </div>
     {% else %}
     <!-- ============================ COMPONENT LOGIN   ================================= -->
         <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
             {% include 'includes/alerts.html' %}
           <div class="card-body">
-              <h4 class="card-title mb-4">Login</h4>
+              <h4 class="card-title mb-4">Iniciar Sesión</h4>
               <form action="{% url 'login' %}" method="POST">
                   {% csrf_token %}
                   <div class="form-group">
-                     <input type="email" class="form-control" placeholder="Email" name="email">
+                     <input type="email" class="form-control" placeholder="Correo Electrónico" name="email">
                   </div> <!-- form-group// -->
                   <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" name="password">
+                    <input type="password" class="form-control" placeholder="Contraseña" name="password">
                   </div> <!-- form-group// -->
                   <div class="form-group">
-                      <a href="{% url 'forgotPassword' %}" class="float-right">Olvidaste tu password?</a>
+                      <a href="{% url 'forgotPassword' %}" class="float-right">¿Olvidaste tu Contraseña?</a>
                   </div> <!-- form-group form-check .// -->
                   <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                      <button type="submit" class="btn btn-primary btn-block"> Iniciar Sesión  </button>
                   </div> <!-- form-group// -->
               </form>
           </div> <!-- card-body.// -->
         </div> <!-- card .// -->
-         <p class="text-center mt-4">No tienes una cuenta? <a href="{% url 'register' %}">Registrate</a></p>
+         <p class="text-center mt-4">¿No tienes una cuenta? <a href="{% url 'register' %}">Registrate</a></p>
          <br><br>
     <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
     {% endif %}

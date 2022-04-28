@@ -56,3 +56,23 @@ ul.thumb li img{
     height: 80px;
     border: 1px solid grey;
 }
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#fondo{
+    width: 1200px;
+    height: 500px;
+    background-image: url("/static/images/banners/img_home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#fondo h1{
+    color: white;
+    font-size: 60px;
+}

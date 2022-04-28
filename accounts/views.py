@@ -33,6 +33,7 @@ def register(request):
         profile = UserProfile()
         profile.user_id = user.id
         profile.profile_picture = 'default/default-user.png'
+        profile.save()
 
         current_site = get_current_site(request)
         mail_subject = 'Por favor activa tu cuenta'
@@ -242,7 +243,6 @@ def edit_profile(request):
         'profile_form': profile_form,
         'userprofile': userprofile,
     }
-
     return render(request, 'accounts/edit_profile.html', context)
 
 
@@ -260,7 +260,6 @@ def change_password(request):
             if success:
                 user.set_password(new_password)
                 user.save()
-
                 messages.success(request, 'El password se actualizo exitosamente')
                 return redirect('change_password')
             else:

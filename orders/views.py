@@ -1,8 +1,5 @@
-import datetime
-
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-
 from carts.models import CartItem
 from store.models import Product
 from .forms import OrderForm
@@ -10,6 +7,7 @@ from .models import Order, Payment, OrderProduct
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 import json
+import datetime
 
 
 def place_order(request, total=0, quantity=0):
@@ -162,3 +160,21 @@ def order_complete(request):
         return render(request, 'orders/order_complete.html', context)
     except(Payment.DoesNotExist, Order.DoesNotExist):
         return redirect('home')
+
+
+def order(request, order_num):
+    # order_number = request.GET.get('order_number')
+    order = Order.objects.get(user=request.user, is_ordered=True, order_number=order_num)
+    ordered_products = OrderProduct.objects.filter(order_id=order.id)
+
+    subtotal = 0
+    for i in ordered_products:
+        subtotal += i.product_price * i.quantity
+
+    context = {
+        'order': order,
+        'ordered_products': ordered_products,
+        'subtotal': subtotal,
+    }
+
+    return render(request, 'orders/orders.html', context)
